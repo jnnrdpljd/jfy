@@ -10,7 +10,7 @@ const songs = [
     {
         title: "Kusapiling",
         artist: "Anthony Meneses",
-        src: "kusapiling.mp3",
+        src: "Kusapiling.mp3",
         img: "kusapiling.jpg"
     },
     {
