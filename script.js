@@ -10,7 +10,7 @@ const songs = [
     {
         title: "Kusapiling",
         artist: "Anthony Meneses",
-        src: "Kusapiling.mp3",
+        src: "kusapiling.mp3",
         img: "kusapiling.jpg"
     },
     {
@@ -53,7 +53,7 @@ const songs = [
 
 function startMusic() {
     coverPage.classList.add("hidden");
-    loadSong(0);
+    loadSong(0), true;
 }
 
 function loadSong(index) {
