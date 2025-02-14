@@ -1,77 +1,53 @@
-let currentSongIndex = 0;
 const audio = document.getElementById("audio");
 const playPauseButton = document.getElementById("playPauseButton");
 const progressBar = document.getElementById("progressBar");
 const progressContainer = document.getElementById("progressContainer");
 const startTime = document.getElementById("startTime");
 const endTime = document.getElementById("endTime");
+const coverPage = document.getElementById("coverPage");
+
+let currentSongIndex = 0;
 
 const songs = [
-    {
-        title: "Kusapiling",
-        artist: "Anthony Meneses",
-        src: "kusapiling.mp3",
-        img: "kusapiling.jpg"
-    },
-    {
-        title: "Oh, Giliw",
-        artist: "Adie",
-        src: "giliw.mp3",
-        img: "oh,giliw.png"
-    },
-    {
-        title: "Uhaw",
-        artist: "Dilaw",
-        src: "uhaw.mp3",
-        img: "uhaw.jpg"
-    },
-    {
-        title: "Dalangin",
-        artist: "Earl Agustin",
-        src: "dalangin.mp3",
-        img: "dalangin.jpg"
-    },
-    {
-        title: "Miss Miss",
-        artist: "Rob Deniel",
-        src: "miss.mp3",
-        img: "miss.png"
-    },
-    {
-        title: "Baliw",
-        artist: "Sud",
-        src: "baliw.mp3",
-        img: "baliw.png"
-    },      
-    {
-        title: "Happiness",
-        artist: "Rex Orange County",
-        src: "happiness.mp3",
-        img: "happiness.jpg"
-    }
+    { title: "Kusapiling", artist: "Anthony Meneses", src: "Kusapiling.mp3", img: "kusapiling.jpg" },
+    { title: "Oh, Giliw", artist: "Adie", src: "giliw.mp3", img: "oh,giliw.png" },
+    { title: "Uhaw", artist: "Dilaw", src: "uhaw.mp3", img: "uhaw.jpg" },
+    { title: "Dalangin", artist: "Earl Agustin", src: "dalangin.mp3", img: "dalangin.jpg" },
+    { title: "Miss Miss", artist: "Rob Deniel", src: "miss.mp3", img: "miss.png" },
+    { title: "Baliw", artist: "Sud", src: "baliw.mp3", img: "baliw.png" },
+    { title: "Happiness", artist: "Rex Orange County", src: "happiness.mp3", img: "happiness.jpg" }
 ];
 
+// Start music when clicking on cover page
 function startMusic() {
-    coverPage.classList.add("hidden");
-    loadSong(0), true;
+    coverPage.classList.add("hidden");  // Hide the cover page
+    loadSong(0, true);  // Load and play the first song
 }
 
-function loadSong(index) {
+// Load song and optionally play it
+function loadSong(index, shouldPlay = false) {
+    currentSongIndex = index;
     let song = songs[index];
+
     audio.src = song.src;
     document.getElementById("songTitle").innerText = song.title;
     document.getElementById("artistName").innerText = song.artist;
     document.getElementById("coverImage").src = song.img;
     audio.currentTime = 0;
-    updateTimeDisplay();
-    audio.play();
-    playPauseButton.innerHTML = "&#x23F8;"; // Pause icon
+
+    // Ensure metadata is loaded before playing
+    audio.onloadedmetadata = () => {
+        updateTimeDisplay();
+        if (shouldPlay) {
+            audio.play().catch(error => console.log("Playback error:", error));
+            playPauseButton.innerHTML = "&#x23F8;"; // Pause icon
+        }
+    };
 }
 
 // Automatically play the next song when the current one ends
 audio.addEventListener("ended", () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop back if last song
-    loadSong(currentSongIndex);
+    nextSong();
 });
 
 // Play/Pause button toggle
@@ -87,22 +63,24 @@ function togglePlayPause() {
 
 // Next song function
 function nextSong() {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    loadSong(currentSongIndex);
+    let nextIndex = (currentSongIndex + 1) % songs.length;
+    loadSong(nextIndex, true);
 }
 
 // Previous song function
 function prevSong() {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-    loadSong(currentSongIndex);
+    let prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    loadSong(prevIndex, true);
 }
 
 // Update progress bar as song plays
 audio.addEventListener("timeupdate", updateProgress);
 
 function updateProgress() {
-    const percentage = (audio.currentTime / audio.duration) * 100;
-    progressBar.style.width = `${percentage}%`;
+    if (audio.duration) {
+        const percentage = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = `${percentage}%`;
+    }
     updateTimeDisplay();
 }
 
