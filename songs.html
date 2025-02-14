@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Page</title>
+    <link rel="stylesheet" href="styles1.css">  
+</head>
+<body>
+    <div class="main">
+            <div class="content">
+                <div id="coverPage" class="cover-page" onclick="startMusic()">
+                    <h1>SONGS THAT REMINDS ME OF YOU</h1>
+                    <p>Click to start playing</p>
+                </div>
+                
+                <div class="music-card">
+                    <img id="coverImage" src="cover.jpg" alt="Album Cover">
+                    <h3 id="songTitle">Kusapiling</h3>
+                    <p id="artistName">Anthony Meneses</p>
+                
+                    <!-- Time and Progress Bar -->
+                    <div class="time-progress-wrapper">
+                        <span id="startTime">0:00</span>
+                        <div class="progress-container" id="progressContainer">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <span id="endTime">0:00</span>
+                    </div>
+                
+                    <audio id="audio" onloadedmetadata="updateTimeDisplay()" ontimeupdate="updateProgress()"></audio>
+                
+                    <!-- Music Controls -->
+                    <div class="music-controls">
+                        <button onclick="prevSong()">&#x23EE;</button> <!-- Previous -->
+                        <button id="playPauseButton" onclick="togglePlayPause()">&#x23F5;</button> <!-- Play/Pause -->
+                        <button onclick="nextSong()">&#x23ED;</button> <!-- Next -->
+                    </div>
+                </div>
+            </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>

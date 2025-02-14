@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #fff0f0;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+.cover-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f28b82;
+    color: WHITE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.cover-page h1 {
+    font-size: 36px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
+}
+
+.cover-page p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* Hide cover when clicked */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.music-card img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pop 0.5s ease-in-out;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+p {
+    font-size: 14px;
+    color: black;
+}
+
+.time-progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.progress-container {
+    flex-grow: 1;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #f28b82;
+    transition: width 0.2s;
+}
+
+.progress-container:hover {
+    background: #bbb;
+}
+
+.music-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.music-controls button {
+    font-size: 22px;
+    padding: 10px 15px;
+    border: none;
+    background: #f28b82;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.music-controls button:hover {
+    background: #F59393;
+    transform: scale(1.1);
+}
+
+.music-controls button:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 400px) {
+    .container {
+        width: 90%;
+    }
+}

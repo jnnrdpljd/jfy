@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUST FOR YOU</title>
+    <style>
+        /* Moving Background */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(90deg, #f28b82, #f28b82); /* Gradient Background */
+            background-blend-mode: overlay; /* Blends the GIF with the gradient */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Text Style */
+        .letter-text {
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .spaced-text {
+            margin-bottom: 20px; /* Adjust space between lines */
+        }
+
+        /* Mailbox Container */
+        .mailbox-container {
+            position: relative;
+            width: 450px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Mailbox Image */
+        .mailbox {
+            width: 450px; /* Make it larger */
+            height: auto; /* Maintain aspect ratio */
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Hover Effect */
+        .mailbox-container:hover {
+            transform: scale(1.1); /* Slight zoom-in effect */
+        }
+
+        /* Click Effect */
+        .mailbox-container:active {
+            transform: scale(0.9); /* Click shrink effect */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-text">
+        <p class="spaced-text">KNOCK KNOCK!<br>YOU'VE GOT A LETTER JUST FOR YOU</p>
+    </div>
+
+    <!-- Clickable Mailbox -->
+    <div class="mailbox-container" onclick="openLetter()">
+        <img src="https://media2.giphy.com/media/wAOrqVpbJdfDAjwcSN/giphy.gif" class="mailbox" alt="Mailbox">
+    </div>
+
+    <p class="letter-text">CLICK ME!</p>
+
+    <script>
+        function openLetter() {
+            // Small shrinking effect on click
+            document.querySelector('.mailbox-container').style.transform = "scale(0.8)";
+
+            // Delay navigation for 1.5 seconds (1500ms)
+            setTimeout(() => {
+                window.location.href = "title.html"; // Redirect to title.html
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>

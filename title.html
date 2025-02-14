@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUST FOR YOU</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #fff5f5;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #f28b82;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 48px;
+            font-weight: bold;
+            transition: top 0.3s;
+            z-index: 10;
+        }
+        .container {
+            background-color: #fff0f0;
+            padding: 20px;
+            border-radius: 15px;
+            width: 50%;
+            max-width: 700px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
+            margin: 100px auto;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+            font-family: 'Dancing Script', cursive;
+            padding: 40px;
+            border: 2px solid #ff7b7b;
+        }
+        .container.active {
+            display: flex;
+        }
+        .next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff7b7b;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .next-button:hover {
+            background: #e06666;
+        }
+        .song-container {
+            position: absolute;
+            top: 100px;
+            right: 50px; /* Adjusted for better spacing */
+            width: 350px;
+            background: #f28b82;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typing::after {
+            content: "|";
+            display: inline-block;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .content {
+            font-size: 20px;
+            font-family: 'Dancing Script', cursive;
+            text-align: left;
+            white-space: pre-line; /* Allow text to wrap */
+            word-wrap: break-word; /* Break long words properly */
+            overflow-wrap: break-word; /* Alternative for better wrapping */
+            max-width: 100%; /* Ensures content stays within the container */
+        }
+
+        .gif-container {
+            position: absolute; /* Position it outside the container */
+            left: 5%; /* Adjust the left position */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Align properly */
+        }
+
+        .gif {
+            width: 300px; /* Adjust size */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Optional: Rounded corners */
+            animation: gifSpeedControl 2s steps(10) infinite;
+        }
+        @keyframes gifSpeedControl {
+            from { transform: scale(1); }
+            to { transform: scale(1); }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="header" id="header">JUST FOR YOU</div>
+
+    <div class="gif-container">
+        <img src="heart.gif" class="gif" alt="GIF">
+    </div>
+
+    <div class="container active" id="container1">
+        <p id="typing-content-1" class="content"></p>
+        <button id="next-button" class="next-button">Next Page</button>
+    </div>
+
+    <div class="container" id="container2">
+        <p id="typing-content-2" class="content"></p>
+        <button id="back-button" class="next-button">Back</button>
+    </div>
+        
+    <div class="song-container">
+        <iframe src="songs.html" width="100%" height="500px" style="border:none" ></iframe>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const text1 = 
+    
+`Dear You,
+
+A wise man once said, “Sharing is caring said by my classmate” - Kiefer 2021. Simple yet unforgettable words that I heard because it reminds me of a story about a Man who shared because He cared (John 3:16). 
+
+You may be surprised and ask yourself about why am I doing this, or am I just doing this to win you. To be honest, I don’t expect anything in return not even being recognized because for me, that is too good to be true. I just want to share the love that God stores in me, sabi kasi ni Lord “Love your enemies, do good to those who hate you”. Alam q namang hate mo aq kaya tinreat na lang kita as an enemy cuz I love… HSHAHSHAHA. Kidding aside, just like what i have said before this is simply an act of what I feel about you genuinely. Even though I tried to stop thinking about you so many times, but I can’t because you are just too pretty to ignore. Paano ba naman kasi iisipin q pa lang na aalisin na kita sa isip q, kinagabihan naman mapapanaginipan kita, o kaya may lalabas sa fyp q na “Signs that God does not want you to move on from someone” kaya di nawawala eh hays… `;
+
+    const text2 = 
+    
+`Anyways, I believe that there’s a purpose on why God allowed this to happen. Because of the roller-coaster ride of excitement and disappointments during my attention seeking era, I learned how to depend on God even better. Yung tipong lahat ng mga sasabihin q at gagawin q sayo sasabihin q muna sa Kaniya kung okay ba ‘to or kung will Niya ba ‘tong ginagawa ko. Kahit walang kasiguraduhan sa mga susunod na mangyayari, ginagawa ko pa rin because I trust that God is in control. Kahit ilang beses mo na akong dinedma, there’s still the peace inside of me that surpasses all understanding. All of that would not happen if it weren’t for you, that’s why I am so grateful for the person on the other side of the screen who is reading this message (kala mo nanonood ng tiktok eh HAHSHAHA). Because of you, I am able to share the love to the people I care like what God did on the cross. Kagaya nga ng sabi ni Kiefer, "Sharing is Caring". That's why I encourage you to use this gift to share to the people you care and love.
+
+
+Happy Valentine’s Day! 
+
+Sincerely Yours,
+IT Admirer`;
+
+    let index1 = 0;
+    let index2 = 0;
+    const speed = 50; // Typing speed in milliseconds
+    const typingContent1 = document.getElementById("typing-content-1");
+    const typingContent2 = document.getElementById("typing-content-2");
+    const nextButton = document.getElementById("next-button");
+    const backButton = document.getElementById("back-button");
+
+    nextButton.style.display = "none"; // Hide the Next button initially
+    backButton.style.display = "none"; // Hide the Back button initially
+
+    function typeText(contentElement, text, index, callback) {
+        if (index < text.length) {
+            contentElement.innerHTML += text.charAt(index) === "\n" ? "<br>" : text.charAt(index);
+            setTimeout(() => typeText(contentElement, text, index + 1, callback), speed);
+        } else {
+            callback(); // Call the function to show the button when typing completes
+        }
+    }
+
+    function showNextButton() {
+        nextButton.style.display = "block"; // Show Next button when typing finishes
+    }
+
+    function showBackButton() {
+        backButton.style.display = "block"; // Show Back button when typing finishes
+    }
+
+    function showNextContainer() {
+        document.getElementById("container1").classList.remove("active");
+        document.getElementById("container2").classList.add("active");
+        typingContent2.innerHTML = ""; // Clear previous text
+        nextButton.style.display = "none"; // Hide Next button in second container
+        typeText(typingContent2, text2, 0, showBackButton);
+    }
+
+    function showPreviousContainer() {
+        document.getElementById("container2").classList.remove("active");
+        document.getElementById("container1").classList.add("active");
+        typingContent1.innerHTML = ""; // Clear previous text
+        backButton.style.display = "none"; // Hide Back button
+        typeText(typingContent1, text1, 0, showNextButton);
+    }
+
+    // Start typing the first content on page load
+    typeText(typingContent1, text1, 0, showNextButton);
+
+    // Attach functions to buttons
+    nextButton.addEventListener("click", showNextContainer);
+    backButton.addEventListener("click", showPreviousContainer);
+});
+
+
+    </script>
+</body>
+</html>
